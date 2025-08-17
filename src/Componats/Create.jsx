@@ -1,16 +1,24 @@
 import { useState } from "react";
 
 export const Create = (props) => {
-  console.log(props);
+  const users = props.users;
+  const setUsers = props.setUsers;
+
   const [fullName, setFullname] = useState("");
   const [age, setAge] = useState("18");
-  
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const newUser = { fullName, age };
-    console.log(newUser);
+
+    const newUser = {
+      name: fullName,
+      age: age,
+    };
+
+    setUsers([...users, newUser]);
+
     setFullname("");
+    setAge("18");
   };
 
   return (
@@ -30,7 +38,7 @@ export const Create = (props) => {
           type="number"
           placeholder="age"
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
