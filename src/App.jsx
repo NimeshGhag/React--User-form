@@ -7,7 +7,7 @@ const App = () => {
   ]);
 
   return (
-    <div>
+    <div className="p-5 flex  justify-between gap-10 w-screen h-screen bg-zinc-900 text-white">
       <Create users ={users} setUsers={setUsers} />
       <Read users ={users} setUsers={setUsers} />
     </div>

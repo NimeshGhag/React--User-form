@@ -22,10 +22,11 @@ export const Create = (props) => {
   };
 
   return (
-    <div>
-      <h1>Register user</h1>
-      <form onSubmit={submitHandler}>
+    <div className="w-sm">
+      <h1 className="text-5xl mb-8 font-thin">Register user</h1>
+      <form className="flex gap-5" onSubmit={submitHandler}>
         <input
+          className="outline-0 border-b text-sm "
           onChange={(e) => setFullname(e.target.value)}
           value={fullName}
           type="text"
@@ -33,12 +34,13 @@ export const Create = (props) => {
         />
 
         <input
+          className="outline-0 border-b text-sm"
           onChange={(e) => setAge(e.target.value)}
           value={age}
           type="number"
           placeholder="age"
         />
-        <button type="submit">Submit</button>
+        <button className="rounded  border px-3 py-1 cursor-pointer hover:bg-zinc-500" type="submit">Submit</button>
       </form>
     </div>
   );
