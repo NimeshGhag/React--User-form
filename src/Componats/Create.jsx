@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export const Create = (props) => {
   const users = props.users;
@@ -14,6 +15,7 @@ export const Create = (props) => {
   const submitHandler = (data) => {
     setUsers([...users, data]);
     reset();
+    toast.success("User Created");
   };
 
   return (
@@ -27,7 +29,9 @@ export const Create = (props) => {
             type="text"
             placeholder="Full Name"
           />
-          <small className="font-thin text-xs text-red-400">{errors?.name?.message}</small>
+          <small className="font-thin text-xs text-red-400">
+            {errors?.name?.message}
+          </small>
         </div>
 
         <div>
@@ -37,7 +41,9 @@ export const Create = (props) => {
             type="number"
             placeholder="age"
           />
-          <small className="font-thin text-xs text-red-400">{errors?.name?.message}</small>
+          <small className="font-thin text-xs text-red-400">
+            {errors?.name?.message}
+          </small>
         </div>
 
         <div>

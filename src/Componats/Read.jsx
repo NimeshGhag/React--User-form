@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const Read = (props) => {
   const users = props.users;
   const setUsers = props.setUsers;
@@ -5,6 +7,7 @@ const Read = (props) => {
   const DeleteHandler =(index)=>{
     const filterUser = users.filter((user ,i)=> i !== index);
     setUsers(filterUser);
+    toast.error('User Deleted')
   }
 
 
