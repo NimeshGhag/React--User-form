@@ -1,46 +1,53 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export const Create = (props) => {
   const users = props.users;
   const setUsers = props.setUsers;
 
-  const [fullName, setFullname] = useState("");
-  const [age, setAge] = useState("18");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    const newUser = {
-      name: fullName,
-      age: age,
-    };
-
-    setUsers([...users, newUser]);
-
-    setFullname("");
-    setAge("18");
+  const submitHandler = (data) => {
+    setUsers([...users, data]);
+    reset();
   };
 
   return (
     <div className="w-sm">
       <h1 className="text-5xl mb-8 font-thin">Register user</h1>
-      <form className="flex gap-5" onSubmit={submitHandler}>
-        <input
-          className="outline-0 border-b text-sm "
-          onChange={(e) => setFullname(e.target.value)}
-          value={fullName}
-          type="text"
-          placeholder="Full Name"
-        />
+      <form className="flex gap-5" onSubmit={handleSubmit(submitHandler)}>
+        <div>
+          <input
+            {...register("name", { required: "Name can not be Empty" })}
+            className="outline-0 border-b text-sm pb-2 capitalize"
+            type="text"
+            placeholder="Full Name"
+          />
+          <small className="font-thin text-xs text-red-400">{errors?.name?.message}</small>
+        </div>
 
-        <input
-          className="outline-0 border-b text-sm"
-          onChange={(e) => setAge(e.target.value)}
-          value={age}
-          type="number"
-          placeholder="age"
-        />
-        <button className="rounded  border px-3 py-1 cursor-pointer hover:bg-zinc-500" type="submit">Submit</button>
+        <div>
+          <input
+            {...register("age", { required: "age can not be Empty" })}
+            className="outline-0 border-b text-sm pb-2"
+            type="number"
+            placeholder="age"
+          />
+          <small className="font-thin text-xs text-red-400">{errors?.name?.message}</small>
+        </div>
+
+        <div>
+          <button
+            className="rounded  border px-3 py-1 cursor-pointer hover:bg-zinc-500"
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

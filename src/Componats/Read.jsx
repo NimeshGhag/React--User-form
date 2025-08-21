@@ -10,8 +10,8 @@ const Read = (props) => {
 
   const renderUser = users.map((user, index) => {
     return (
-      <li key={index} className="  mb-2 p-2 flex justify-between items-center  bg-zinc-800 rounded">
-        {user.name} Age : {user.age}
+      <li key={index} className="  mb-2 p-2 flex justify-between items-center bg-zinc-800 rounded capitalize">
+        {user.name} || Age : {user.age}
         <button className=" rounded  text-xs border px-2 py-1 bg-red-700 cursor-pointer" onClick={()=>DeleteHandler(index)}>Delete</button>
       </li>
     );
