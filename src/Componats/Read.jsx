@@ -1,8 +1,9 @@
+import { useContext } from "react";
 import { toast } from "react-toastify";
+import { usercontext } from "../Wrapper";
 
-const Read = (props) => {
-  const users = props.users;
-  const setUsers = props.setUsers;
+const Read = () => {
+const [users, setUsers]=useContext(usercontext)
 
   const DeleteHandler =(index)=>{
     const filterUser = users.filter((user ,i)=> i !== index);

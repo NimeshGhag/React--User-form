@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { usercontext } from "../Wrapper";
 
-export const Create = (props) => {
-  const users = props.users;
-  const setUsers = props.setUsers;
+export const Create = () => {
+
+  const [users, setUsers]=useContext(usercontext)
+  
 
   const {
     register,
